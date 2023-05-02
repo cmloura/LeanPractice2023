@@ -7,8 +7,6 @@ variable(a b Q : Type)
 def DownwardsClosed (d : Set ℚ) : Prop :=
   ∀ r r' : ℚ, ((r'∈ d) ∧ (r < r')) → (r ∈ d)  
 
-    -- Set.univ (for dedekind cut instead of T)
-
 def DedekindCut(d : Set ℚ) : Prop := DownwardsClosed d ∧ d ≠ ∅ ∧ d ≠ Set.univ
 
 abbrev Real : Type := {x : Set ℚ // DedekindCut x }
@@ -16,7 +14,13 @@ abbrev Real : Type := {x : Set ℚ // DedekindCut x }
 instance : LE Real where
   le := λr₁ r₂ : Real => r₁.val ⊆ r₂.val
 
-lemma unbounded : ∀r : Real, ∃s: Real, r < s := sorry
+lemma unbounded : ∀r : Real, ∃s: Real, r < s := 
+  have i : Real
+  -- let T := {j : Real | LE j i}
+  -- example (k : T = ∅) : true := -- T can be null or not null
+  
+
+
 
 def IsUpperBound(S : Set Real) (n : Real) : Prop := ∀ x : Real, (x ∈ S) → (n >= x)
 
